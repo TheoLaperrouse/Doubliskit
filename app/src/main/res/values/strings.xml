@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Doubliskit</string>
+    <string name="title_activity_regles">Regles</string>
+    <string name="regles">
+        "Doubliskit:
+        Variante du Biskit qui se joue à 4 dés au lieu de 2.
+        2 paires de dés de couleurs différentes.
+        Le joueur lance comme, à son habitude les dés et observe les combinaisons que forment les dés.
+        Lorsque que celui-ci ne réalise aucune des combinaisons suivantes, il boit un coup et passe son tour.
+        Si une de ces combinaisons est réalisé sur une paire de dés, elle est appliqué et le lanceur rejoue.
+        Si il y a deux combinaisons sur les 2 paires de dés, le lanceur choisit la combinaison qui s\'applique hors Biskit ,"capsule" et double 1 qui prennent le dessus sur les autres.
+        - Un double, le lanceur peut distribuer le nombre de gorgées indiqué par les dés (Exemple: double 2 = 2 gorgées à distribuer).
+        A noter que lorsque quil y a un double 1 cest le lanceur qui boit et que si il y a un double 6, le lanceur invente une règle en plus des gorgées à distribuer.
+        - Une somme de 3 sur les dés :
+            Le lanceur devient le détenteur de "la capsule" il boit dès qu'un trois s'affiche sur les dés
+        - Une somme de 6 sur les dés de même couleur :
+            Le joueur avant le lanceur boit un coup.
+        - Une somme de 7 sur les dés de même couleur :
+            Le dernier joueur à mettre son pouce sur son front en criant "Biskit" boit un coup.
+        - Une somme de 8 sur les dés de même couleur :
+            Le joueur après le lanceur boit un coup.
+        - Une somme de 7 sur les 2 paires de dés :
+             Le dernier joueur à mettre ses deux pouces sur son front en criant "Doubliskit" boit un coup."
+    </string>
+    <string name="action_settings">Settings</string>
+</resources>
