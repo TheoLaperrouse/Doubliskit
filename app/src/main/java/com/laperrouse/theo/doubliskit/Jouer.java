@@ -167,6 +167,10 @@ public class Jouer extends AppCompatActivity {
                     affRegle = affRegle1 + affRegle2;
                 }
 
+
+                if (sommeRand1 == 3 || sommeRand2 == 3){
+                    affRegle = "Le lanceur devient la PUUUUUUTE";
+                }
                 if (sommeRand1 == 7 || sommeRand2 == 7){
                     affRegle = "Le dernier à dire Biskit le pouce sur le front boit";
                 }
@@ -175,9 +179,6 @@ public class Jouer extends AppCompatActivity {
                 }
                 if (sommeRand1 == 2 || sommeRand2 == 2){
                     affRegle = "Le lanceur boit une gorgée";
-                }
-                if (sommeRand1 == 3 || sommeRand2 == 3){
-                    affRegle = "Le lanceur devient la PUUUUUUTE";
                 }
                 regles.setText(affRegle);
             }
