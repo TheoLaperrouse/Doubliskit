@@ -184,13 +184,94 @@ public class Jouer extends AppCompatActivity {
                 int rand4 = 1 + randomInt.nextInt(6);
 
                 //TODO Partie là à modifier pour avoir les couleurs des dés dans un ordre aléatoire
-
-                affichDes(rand1, des1, false);
-                affichDes(rand2, des2, false);
+                /*boolean tab[] = {false, false ,false, false};
+                int compteur = 1;
+                while(compteur < 3){
+                    int rand = randomInt.nextInt(3);
+                    if (tab[rand]) {
+                        switch (rand) {
+                            case 0:
+                                switch (compteur){
+                                    case 1:
+                                        affichDes(rand1, des1,false);
+                                        break;
+                                    case 2:
+                                        affichDes(rand2, des1,false);
+                                        break;
+                                    case 3:
+                                        affichDes(rand3, des1,true);
+                                        break;
+                                    case 4:
+                                        affichDes(rand4, des1,true);
+                                        break;
+                                }
+                                tab[0] = true;
+                                compteur++;
+                                break;
+                            case 1:
+                                switch (compteur){
+                                    case 1:
+                                        affichDes(rand1, des2,false);
+                                        break;
+                                    case 2:
+                                        affichDes(rand2, des2,false);
+                                        break;
+                                    case 3:
+                                        affichDes(rand3, des2,true);
+                                        break;
+                                    case 4:
+                                        affichDes(rand4, des2,true);
+                                        break;
+                                }
+                                tab[1] = true;
+                                compteur++;
+                                break;
+                            case 2:
+                                switch (compteur){
+                                    case 1:
+                                        affichDes(rand1, des3,false);
+                                        break;
+                                    case 2:
+                                        affichDes(rand2, des3,false);
+                                        break;
+                                    case 3:
+                                        affichDes(rand3, des3,true);
+                                        break;
+                                    case 4:
+                                        affichDes(rand4, des3,true);
+                                        break;
+                                }
+                                tab[2] = true;
+                                compteur++;
+                                break;
+                            case 3:
+                                switch (compteur){
+                                    case 1:
+                                        affichDes(rand1, des4,false);
+                                        break;
+                                    case 2:
+                                        affichDes(rand2, des4,false);
+                                        break;
+                                    case 3:
+                                        affichDes(rand3, des4,true);
+                                        break;
+                                    case 4:
+                                        affichDes(rand4, des4,true);
+                                        break;
+                                }
+                                tab[3] = true;
+                                compteur++;
+                                break;
+                        }
+                    }
+                }
+                */
+                affichDes(rand1, des1,false);
+                affichDes(rand2, des2,false);
                 affichDes(rand3, des3,true);
                 affichDes(rand4, des4,true);
-
                 String affRegle = afficherRegle(rand1,rand2,rand3,rand4);
+
                 regles.setText(affRegle);
                 regles2.setText(affRegle);
             }
