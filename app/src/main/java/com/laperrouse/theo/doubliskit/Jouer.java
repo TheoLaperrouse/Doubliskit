@@ -3,6 +3,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -85,9 +87,9 @@ public class Jouer extends AppCompatActivity {
         //Biskit ou Doubliskit
         if(somme1 == 7||somme2 == 7){
             if(somme1== 7 && somme2 == 7){
-                return "DOUBLISKIT !";
+                return "DOUBLISKIT !\nLe premier relance les dés";
             }else{
-                return "BISKIT !";
+                return "BISKIT !\nLe premier relance les dés";
             }
         }
         //Doubles
@@ -162,8 +164,9 @@ public class Jouer extends AppCompatActivity {
         final ImageView des3=findViewById(R.id.des3);
         final ImageView des4 = findViewById(R.id.des4);
 
-        // La Zone de texte où apparaissent les règles
+        // Les Zones de texte où apparaissent les règles
         final TextView regles = findViewById(R.id.regles);
+        final TextView regles2 = findViewById(R.id.regles2);
 
         //Le Bouton pour rejouer
         Button rejouer = findViewById(R.id.butRejouer);
@@ -189,6 +192,7 @@ public class Jouer extends AppCompatActivity {
 
                 String affRegle = afficherRegle(rand1,rand2,rand3,rand4);
                 regles.setText(affRegle);
+                regles2.setText(affRegle);
             }
 
         });

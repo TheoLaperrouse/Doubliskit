@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toTopOf="@+id/des3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.504"
+        app:layout_constraintVertical_bias="0.748"
         app:srcCompat="@drawable/des1" />
 
     <ImageView
@@ -29,10 +29,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/des4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/des1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.504"
+        app:layout_constraintVertical_bias="0.748"
         app:srcCompat="@drawable/des6" />
 
     <ImageView
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginBottom="236dp"
+        android:layout_marginBottom="192dp"
         app:layout_constraintBottom_toBottomOf="@+id/butRejouer"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/des6noir" />
@@ -51,10 +51,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="236dp"
+        android:layout_marginBottom="192dp"
         app:layout_constraintBottom_toBottomOf="@+id/butRejouer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/des3"
         app:srcCompat="@drawable/des1noir" />
 
@@ -84,4 +84,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/des3" />
+
+    <TextView
+        android:id="@+id/regles2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:rotation="-180"
+        android:text="Salut"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/des1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
