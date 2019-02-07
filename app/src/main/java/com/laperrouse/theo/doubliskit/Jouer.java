@@ -57,39 +57,94 @@ public class Jouer extends AppCompatActivity {
         }
     }
 
-    public static String affichRegle (int sommeRand, boolean regles ){
-        String affRegle ="" ;
-        switch(sommeRand) {
-            case 2:
-                if (regles) {
-                    affRegle = "\net ";
-                }
-                affRegle = affRegle + "Le lanceur boit une gorgée";
-                break;
-            case 6:
-                if (regles) {
-                    affRegle = affRegle + "\net ";
-                }
-                affRegle = affRegle + "Le joueur avant le lanceur boit une gorgée";
-                break;
-            case 8:
-                if (regles) {
-                    affRegle = affRegle + "\net ";
-                }
-                affRegle = affRegle + "Le joueur après le lanceur boit une gorgée";
-                break;
-            case 12:
-                if (regles) {
-                    affRegle = affRegle + "\net ";
-                }
-                affRegle = affRegle + "Le joueur distribue 6 gorgées et invente une règle";
-                break;
-            default:
-                break;
+    public static String afficherRegle(int de1, int de2, int de3, int de4){
+        //on déclare toutes nos variables qui vont nous être utiles.
+        int somme1 = de1+de2;
+        int somme2 = de3+de4;
+
+        boolean egal1 = de1 == de2;
+        boolean egal2 = de3 == de4;
+
+        /* Ordre des priorité:
+         * Pute
+         * Biskit
+         * Double 1
+         * Double normal
+         * suivant précédent
+         * */
+
+        //Pute
+        if(somme1 == 3 || somme2 == 3){
+            return "Le lanceur devient la PUUUUUUTE.";
         }
-        return affRegle;
+
+        //Biskit ou Doubliskit
+        if(somme1 == 7||somme2 == 7){
+            if(somme1== 7 && somme2 == 7){
+                return "DOUBLISKIT !";
+            }else{
+                return "BISKIT !";
+            }
+        }
+        //Doubles
+        if(egal1|| egal2){
+            if(somme1 == 2 || somme2== 2){
+            return regleSiDouble(2);
+            }else{
+                if(egal1 && egal2){
+                    int max = Math.max(somme1,somme2);
+                    return regleSiDouble(max);
+                }else{
+                    if(egal1){
+                        return regleSiDouble(somme1);
+                    }else{
+                        return regleSiDouble(somme2);
+                    }
+                }
+            }
+        }
+        //Suivant ou Précédent
+        if((somme1 == 6 && somme2==8) ||(somme1==8 && somme2==6)){
+            return "Le lancer ditribue une gorgée à l'un de ces voisins.";
+        }
+        //Précédent
+        if(somme1==6 ||somme2==6){
+            return "Le joueur précédant le lanceur boit une gorgée.";
+        }
+        //Suivant
+        if(somme1==8 ||somme2==8){
+            return "Le joueur suivant le lanceur boit une gorgée.";
+        }
+
+        return "Dommage, le lanceur boit une gorgée et passe les dés à son voisin.";
     }
 
+    public static String regleSiDouble (int somme){
+        String res = "";
+        switch(somme){
+            case 2 :
+                res = "Le lanceur boit 1 gorgée.";
+                break;
+            case 4 :
+                res = "Le lanceur distribue 2 gorgées.";
+                break;
+            case 6 :
+                res =  "Le lanceur distribue 3 gorgées et le joueur précédent boit.";
+                break;
+            case 8 :
+                res = "Le lanceur distribue 4 gorgées et le joueur suivant boit.";
+                break;
+            case 10 :
+                res = "Le lanceur distribue 5 gorgées.";
+                break;
+            case 12 :
+                res = "Le lanceur distribue 6 gorgées et invente une règle.";
+                break;
+            default :
+                break;
+        }
+        return res;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,75 +166,25 @@ public class Jouer extends AppCompatActivity {
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean regle = false;
-                boolean regle1 = false;
-
-                String affRegle1 = "";
-                String affRegle2 = "";
-                String affRegle = "";
 
                 int rand1;
                 int rand2;
                 int rand3;
                 int rand4;
 
-                int sommeRand1;
-                int sommeRand2;
-
                 rand1 = 1 + randomInt1.nextInt(6);
                 rand2 = 1 + randomInt2.nextInt(6);
                 rand3 = 1 + randomInt3.nextInt(6);
                 rand4 = 1 + randomInt4.nextInt(6);
+
+                //Partie là à modifier pour avoir les couleurs des dés dans un ordre aléatoire
 
                 affichDes(rand1, des1, false);
                 affichDes(rand2, des2, false);
                 affichDes(rand3, des3,true);
                 affichDes(rand4, des4,true);
 
-                sommeRand1 = rand1+rand2;
-                sommeRand2 = rand3+rand4;
-
-
-                if((rand1 == rand2)&&(rand1!=1)&&(rand1!=6)){
-                    affRegle1 = "Distribuez " + Integer.toString(rand1) + " gorgées";
-                    regle1 = true;
-                }
-
-                affRegle1 = affRegle1 + affichRegle(sommeRand1,regle1);
-                if(affRegle1 != ""){
-                    regle1 = true;
-                }
-
-                if((rand3 == rand4)&&(rand3!=1)&&(rand3!=6)){
-                    affRegle2 = "Distribuez " + Integer.toString(rand3) + " gorgées";
-                    regle = true;
-                }
-
-                affRegle2 = affRegle2 + affichRegle(sommeRand2,regle);
-                if(affRegle2 != ""){
-                    regle = true;
-                }
-
-                if(regle1 && regle) {
-                    affRegle = affRegle1 + "\nou " + affRegle2;
-                }
-                else{
-                    affRegle = affRegle1 + affRegle2;
-                }
-
-
-                if (sommeRand1 == 3 || sommeRand2 == 3){
-                    affRegle = "Le lanceur devient la PUUUUUUTE";
-                }
-                if (sommeRand1 == 7 || sommeRand2 == 7){
-                    affRegle = "Le dernier à dire Biskit le pouce sur le front boit";
-                }
-                if (sommeRand1 == 7 && sommeRand2 == 7){
-                    affRegle = "Doubliskit";
-                }
-                if (sommeRand1 == 2 || sommeRand2 == 2){
-                    affRegle = "Le lanceur boit une gorgée";
-                }
+                String affRegle = afficherRegle(rand1,rand2,rand3,rand4);
                 regles.setText(affRegle);
             }
 
