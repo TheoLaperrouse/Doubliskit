@@ -6,9 +6,12 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.Random;
 
 public class Jouer extends AppCompatActivity {
+
+    //Associent les lancers aléatoires à leur image
     public static void affichDes(int nombre,ImageView imageView, boolean noir){
         if(noir){
             switch (nombre) {
@@ -58,6 +61,7 @@ public class Jouer extends AppCompatActivity {
     }
 
     public static String afficherRegle(int de1, int de2, int de3, int de4){
+
         //on déclare toutes nos variables qui vont nous être utiles.
         int somme1 = de1+de2;
         int somme2 = de3+de4;
@@ -87,7 +91,7 @@ public class Jouer extends AppCompatActivity {
             }
         }
         //Doubles
-        if(egal1|| egal2){
+        if(egal1 || egal2){
             if(somme1 == 2 || somme2== 2){
             return regleSiDouble(2);
             }else{
@@ -129,7 +133,7 @@ public class Jouer extends AppCompatActivity {
                 res = "Le lanceur distribue 2 gorgées.";
                 break;
             case 6 :
-                res =  "Le lanceur distribue 3 gorgées et le joueur précédent boit.";
+                res = "Le lanceur distribue 3 gorgées et le joueur précédent boit.";
                 break;
             case 8 :
                 res = "Le lanceur distribue 4 gorgées et le joueur suivant boit.";
@@ -152,32 +156,31 @@ public class Jouer extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_jouer);
 
+        // Les images des dés
         final ImageView des1 = findViewById(R.id.des1);
         final ImageView des2 = findViewById(R.id.des2);
         final ImageView des3=findViewById(R.id.des3);
         final ImageView des4 = findViewById(R.id.des4);
+
+        // La Zone de texte où apparaissent les règles
         final TextView regles = findViewById(R.id.regles);
+
+        //Le Bouton pour rejouer
         Button rejouer = findViewById(R.id.butRejouer);
-        final Random randomInt1 = new Random();
-        final Random randomInt2 = new Random();
-        final Random randomInt3 = new Random();
-        final Random randomInt4 = new Random();
+
+        final Random randomInt = new Random();
+
 
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int rand1;
-                int rand2;
-                int rand3;
-                int rand4;
+                int rand1 = 1 + randomInt.nextInt(6);
+                int rand2 = 1 + randomInt.nextInt(6);
+                int rand3 = 1 + randomInt.nextInt(6);
+                int rand4 = 1 + randomInt.nextInt(6);
 
-                rand1 = 1 + randomInt1.nextInt(6);
-                rand2 = 1 + randomInt2.nextInt(6);
-                rand3 = 1 + randomInt3.nextInt(6);
-                rand4 = 1 + randomInt4.nextInt(6);
-
-                //Partie là à modifier pour avoir les couleurs des dés dans un ordre aléatoire
+                //TODO Partie là à modifier pour avoir les couleurs des dés dans un ordre aléatoire
 
                 affichDes(rand1, des1, false);
                 affichDes(rand2, des2, false);
