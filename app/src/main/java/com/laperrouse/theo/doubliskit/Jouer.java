@@ -183,14 +183,15 @@ public class Jouer extends AppCompatActivity {
                 int rand3 = 1 + randomInt.nextInt(6);
                 int rand4 = 1 + randomInt.nextInt(6);
 
-                //TODO Partie là à modifier pour avoir les couleurs des dés dans un ordre aléatoire
-                /*boolean tab[] = {false, false ,false, false};
-                int compteur = 1;
-                while(compteur < 3){
-                    int rand = randomInt.nextInt(3);
-                    if (tab[rand]) {
+                //TODO à optimiser
+                boolean tab[] = {false, false ,false, false};
+                int compteur = 0;
+                while(compteur < 4){
+                    int rand = randomInt.nextInt(4);
+                    if (!(tab[rand])) {
                         switch (rand) {
                             case 0:
+                                compteur++;
                                 switch (compteur){
                                     case 1:
                                         affichDes(rand1, des1,false);
@@ -206,9 +207,9 @@ public class Jouer extends AppCompatActivity {
                                         break;
                                 }
                                 tab[0] = true;
-                                compteur++;
                                 break;
                             case 1:
+                                compteur++;
                                 switch (compteur){
                                     case 1:
                                         affichDes(rand1, des2,false);
@@ -224,9 +225,9 @@ public class Jouer extends AppCompatActivity {
                                         break;
                                 }
                                 tab[1] = true;
-                                compteur++;
                                 break;
                             case 2:
+                                compteur++;
                                 switch (compteur){
                                     case 1:
                                         affichDes(rand1, des3,false);
@@ -242,9 +243,9 @@ public class Jouer extends AppCompatActivity {
                                         break;
                                 }
                                 tab[2] = true;
-                                compteur++;
                                 break;
                             case 3:
+                                compteur++;
                                 switch (compteur){
                                     case 1:
                                         affichDes(rand1, des4,false);
@@ -260,18 +261,11 @@ public class Jouer extends AppCompatActivity {
                                         break;
                                 }
                                 tab[3] = true;
-                                compteur++;
                                 break;
                         }
                     }
                 }
-                */
-                affichDes(rand1, des1,false);
-                affichDes(rand2, des2,false);
-                affichDes(rand3, des3,true);
-                affichDes(rand4, des4,true);
                 String affRegle = afficherRegle(rand1,rand2,rand3,rand4);
-
                 regles.setText(affRegle);
                 regles2.setText(affRegle);
             }
