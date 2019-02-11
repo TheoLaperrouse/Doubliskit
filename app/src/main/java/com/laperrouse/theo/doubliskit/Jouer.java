@@ -8,7 +8,8 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Jouer extends AppCompatActivity {
@@ -183,89 +184,38 @@ public class Jouer extends AppCompatActivity {
                 int rand3 = 1 + randomInt.nextInt(6);
                 int rand4 = 1 + randomInt.nextInt(6);
 
-                //TODO à optimiser
-                boolean tab[] = {false, false ,false, false};
-                int compteur = 0;
-                while(compteur < 4){
-                    int rand = randomInt.nextInt(4);
-                    if (!(tab[rand])) {
-                        switch (rand) {
-                            case 0:
-                                compteur++;
-                                switch (compteur){
-                                    case 1:
-                                        affichDes(rand1, des1,false);
-                                        break;
-                                    case 2:
-                                        affichDes(rand2, des1,false);
-                                        break;
-                                    case 3:
-                                        affichDes(rand3, des1,true);
-                                        break;
-                                    case 4:
-                                        affichDes(rand4, des1,true);
-                                        break;
-                                }
-                                tab[0] = true;
-                                break;
-                            case 1:
-                                compteur++;
-                                switch (compteur){
-                                    case 1:
-                                        affichDes(rand1, des2,false);
-                                        break;
-                                    case 2:
-                                        affichDes(rand2, des2,false);
-                                        break;
-                                    case 3:
-                                        affichDes(rand3, des2,true);
-                                        break;
-                                    case 4:
-                                        affichDes(rand4, des2,true);
-                                        break;
-                                }
-                                tab[1] = true;
-                                break;
-                            case 2:
-                                compteur++;
-                                switch (compteur){
-                                    case 1:
-                                        affichDes(rand1, des3,false);
-                                        break;
-                                    case 2:
-                                        affichDes(rand2, des3,false);
-                                        break;
-                                    case 3:
-                                        affichDes(rand3, des3,true);
-                                        break;
-                                    case 4:
-                                        affichDes(rand4, des3,true);
-                                        break;
-                                }
-                                tab[2] = true;
-                                break;
-                            case 3:
-                                compteur++;
-                                switch (compteur){
-                                    case 1:
-                                        affichDes(rand1, des4,false);
-                                        break;
-                                    case 2:
-                                        affichDes(rand2, des4,false);
-                                        break;
-                                    case 3:
-                                        affichDes(rand3, des4,true);
-                                        break;
-                                    case 4:
-                                        affichDes(rand4, des4,true);
-                                        break;
-                                }
-                                tab[3] = true;
-                                break;
-                        }
-                    }
+                ArrayList<Boolean> list = new ArrayList<Boolean>();
+                list.add(false);
+                list.add(false);
+                list.add(true);
+                list.add(true);
+
+                Collections.shuffle(list);
+                affichDes(rand1, des1,list.get(0));
+                affichDes(rand2, des2,list.get(1));
+                affichDes(rand3, des3,list.get(2));
+                affichDes(rand4, des4,list.get(3));
+
+                int i =0;
+                while(list.get(0)!=list.get(i+1)){
+                    i++;
                 }
-                String affRegle = afficherRegle(rand1,rand2,rand3,rand4);
+                String res = "";
+                switch(i){
+                    case 0 :
+                        res = afficherRegle(rand1,rand2,rand3,rand4);
+                        break;
+                    case 1 :
+                        res = afficherRegle(rand1,rand3,rand2,rand4);
+                        break;
+                    case 2 :
+                        res = afficherRegle(rand1,rand4,rand2,rand3);
+                        break;
+                    default :
+                        break;
+                }
+
+                String affRegle = res;
                 regles.setText(affRegle);
                 regles2.setText(affRegle);
             }
